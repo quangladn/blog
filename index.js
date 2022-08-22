@@ -5,7 +5,7 @@ const bodyParser = require("body-parser")
 const path = require("path")
 const urlPath = require("url")
 const status_ = require("./api/status.js")
-
+require("dotenv").config()
 //const __filename = urlPath(import.meta.url);
 //const __dirname = path.dirname(__filename);
 app.use(express.urlencoded())
