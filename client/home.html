@@ -1,0 +1,74 @@
+<html>
+
+    <head>
+        <title>blog sida</title>
+        <style>
+* {
+    font-family:Roboto;
+}
+
+.box {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.box div {
+  width: 99%;
+  height: 100%;
+}
+
+.all-post {
+  flex-direction: column;
+  justify-content: space-between;
+  height: 500px;
+}
+
+.post {
+    border: 5px solid black;
+    width: 75%;
+    height: 250px;
+    padding: 10px;
+}
+        </style>
+    </head>
+    <body>
+        <div class="box">
+        <div>
+        <h1 class="title">blog sida</h1>
+        <div class=create-post">
+            <a href="/create">
+                <button class="btn-create-post">create new post</button>
+            </a>
+        </div>
+        <div class="all-post" id="all-post">
+            <span></span>
+        </div>
+        </div>
+        </div>
+    </body>
+<script>
+    function httpGet()
+    {
+        var xmlHttp = new XMLHttpRequest();
+        xmlHttp.open( "GET", "/database", false );
+        xmlHttp.send( null );
+        return xmlHttp.responseText;
+    }
+    const a = httpGet()
+
+    const b = JSON.parse(a)
+    let content = document.querySelector("#all-post")
+
+    for (let i = 0; i <= b.length; i++)
+    {
+            const user = b[i]['user']
+            const title = b[i]['title']
+            const dep = b[i]['depscription']
+
+            content.innerHTML += `<div class="post"><h3>${user}</h3><h2>${title}</h2><h4>${dep}</h4></div>\n`
+    }
+
+</script>
+</script>
+</html>
