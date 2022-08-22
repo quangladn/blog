@@ -1,5 +1,5 @@
 const express = require("express")
-
+const path = require("path")
 /*
 { user:string, date:Date, title:string, depscription: string }
 */
@@ -15,7 +15,7 @@ status_.get("/database", (rep,res) => {
 status_.post("/database", (rep,res) => {
     console.log(rep.body)
     data.unshift(rep.body)
-    res.send("suscess")
+    res.sendFile(path.join(__dirname, '../client/home.html'))
 })
 
 status_.get("/database/:user", (rep,res) => {
